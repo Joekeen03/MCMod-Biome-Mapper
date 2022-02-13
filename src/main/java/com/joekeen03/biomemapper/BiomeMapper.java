@@ -3,8 +3,12 @@ package com.joekeen03.biomemapper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.network.NetworkCheckHandler;
+import cpw.mods.fml.relauncher.Side;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Map;
 
 @Mod(modid = Tags.MODID, version = Tags.VERSION, name = Tags.MODNAME, acceptedMinecraftVersions = "[1.7.10]")
 public class BiomeMapper {
@@ -13,6 +17,11 @@ public class BiomeMapper {
 
     @SidedProxy(clientSide= Tags.GROUPNAME + ".ClientProxy", serverSide=Tags.GROUPNAME + ".CommonProxy")
     public static CommonProxy proxy;
+
+    @NetworkCheckHandler
+    public boolean networkCheckHandler(Map<String, String> map, Side side) {
+        return true;
+    }
 
     @Mod.EventHandler
     // preInit "Run before anything else. Read your config, create blocks, items,

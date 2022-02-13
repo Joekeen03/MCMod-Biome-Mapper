@@ -1,5 +1,6 @@
 package com.joekeen03.biomemapper;
 
+import com.joekeen03.biomemapper.util.MapCommand;
 import cpw.mods.fml.common.event.*;
 
 public class CommonProxy {
@@ -29,7 +30,7 @@ public class CommonProxy {
 
     // register server commands in this event handler
     public void serverStarting(FMLServerStartingEvent event) {
-
+        event.registerServerCommand(new MapCommand());
     }
 
     public void serverStarted(FMLServerStartedEvent event) {
